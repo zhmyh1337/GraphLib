@@ -14,6 +14,7 @@ namespace graph
 
 	public:
 		virtual std::vector<EdgeType> GetAllEdgesOfVertex(VertexType vertex) const = 0;
+		virtual void AddEdge(VertexType vertex, EdgeType edge) = 0;
 	};
 
 	template<class _VertexType>
@@ -24,5 +25,6 @@ namespace graph
 
 	public:
 		virtual std::vector<EdgeType> GetAllEdgesOfVertex(_VertexType vertex) const = 0;
+		virtual void AddEdge(_VertexType vertex, EdgeType edge) = 0;
 	};
 }

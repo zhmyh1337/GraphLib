@@ -14,8 +14,12 @@ namespace graph
 
 	public:
 		using _Mybase::EdgeType;
+		using ContainerType = std::unordered_map<_VertexType, std::vector<EdgeType>>;
 
 	public:
+		AdjacencyList() : m_data() {}
+		AdjacencyList(const ContainerType& data) : m_data(data) {}
+
 		std::vector<EdgeType> GetAllEdgesOfVertex(_VertexType vertex) const override
 		{
 			auto it = m_data.find(vertex);
@@ -29,7 +33,12 @@ namespace graph
 			}
 		}
 
+		void AddEdge(_VertexType vertex, EdgeType edge) override
+		{
+			m_data[vertex].push_back(edge);
+		}
+
 	private:
-		std::unordered_map<_VertexType, std::vector<EdgeType>> m_data;
+		ContainerType m_data;
 	};
 }

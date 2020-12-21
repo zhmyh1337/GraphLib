@@ -21,14 +21,12 @@ namespace graph
 		using Container = IGraphContainer<VertexType, WeightType>;
 
 	public:
-		Graph()
-		{
-			m_graph = new AdjacencyList<VertexType, WeightType>();
-			m_graph->GetAllEdgesOfVertex(5);
-		}
+		Graph() : m_structure(new AdjacencyList<VertexType, WeightType>()) {}
+
+		explicit Graph(Container* structure) : m_structure(structure) {}
 
 	private:
-		Container* m_graph;
+		Container* m_structure;
 	};
 
 	/// <summary>
@@ -45,13 +43,11 @@ namespace graph
 		using Container = IGraphContainer<VertexType>;
 
 	public:
-		Graph()
-		{
-			m_graph = new AdjacencyList<VertexType>();
-			m_graph->GetAllEdgesOfVertex(5);
-		}
+		Graph() : m_structure(new AdjacencyList<VertexType>()) {}
+
+		explicit Graph(Container* structure) : m_structure(structure) {}
 
 	private:
-		Container* m_graph;
+		Container* m_structure;
 	};
 }
