@@ -4,6 +4,7 @@
 
 namespace graph
 {
+	// Weighted graph.
 	template<class _VertexType, class _WeightType = void>
 	class IGraphContainer
 	{
@@ -17,14 +18,16 @@ namespace graph
 		virtual void AddEdge(VertexType vertex, EdgeType edge) = 0;
 	};
 
+	// Unweighted graph.
 	template<class _VertexType>
 	class IGraphContainer<_VertexType, void>
 	{
 	public:
-		using EdgeType = _VertexType;
+		using VertexType = _VertexType;
+		using EdgeType = VertexType;
 
 	public:
-		virtual std::vector<EdgeType> GetAllEdgesOfVertex(_VertexType vertex) const = 0;
-		virtual void AddEdge(_VertexType vertex, EdgeType edge) = 0;
+		virtual std::vector<EdgeType> GetAllEdgesOfVertex(VertexType vertex) const = 0;
+		virtual void AddEdge(VertexType vertex, EdgeType edge) = 0;
 	};
 }

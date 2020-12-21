@@ -2,14 +2,11 @@
 
 #include "Container/IGraphContainer.h"
 #include "Container/AdjacencyList.h"
+#include "Container/AdjacencyMatrix.h"
 
 namespace graph
 {
-	/// <summary>
-	/// Weighted graph.
-	/// </summary>
-	/// <typeparam name="_VertexType">Type of vertices.</typeparam>
-	/// <typeparam name="_WeightType">Type of weights.</typeparam>
+	// Weighted graph.
 	template<class _VertexType, class _WeightType = void>
 	class Graph
 	{
@@ -29,10 +26,7 @@ namespace graph
 		Container* m_structure;
 	};
 
-	/// <summary>
-	/// Unweighted graph.
-	/// </summary>
-	/// <typeparam name="_VertexType">Type of vertices.</typeparam>
+	// Unweighted graph.
 	template<class _VertexType>
 	class Graph<_VertexType, void>
 	{
