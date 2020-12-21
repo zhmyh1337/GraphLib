@@ -1,5 +1,8 @@
 #pragma once
 
+#include "Container/IGraphContainer.h"
+#include "Container/AdjacencyList.h"
+
 namespace graph
 {
 	/// <summary>
@@ -13,6 +16,12 @@ namespace graph
 	public:
 		using VertexType = _VertexType;
 		using WeightType = _WeightType;
+
+	private:
+		using Container = IGraphContainer<VertexType, WeightType>;
+
+	private:
+		Container* m_graph;
 	};
 
 	/// <summary>
@@ -24,5 +33,11 @@ namespace graph
 	{
 	public:
 		using VertexType = _VertexType;
+
+	private:
+		using Container = IGraphContainer<VertexType>;
+
+	private:
+		Container* m_graph;
 	};
 }
