@@ -8,10 +8,12 @@ namespace graph
 	class IGraphContainer
 	{
 	public:
-		using EdgeType = std::pair<_VertexType, _WeightType>;
+		using VertexType = _VertexType;
+		using WeightType = _WeightType;
+		using EdgeType = std::pair<VertexType, WeightType>;
 
 	public:
-		virtual std::vector<EdgeType> GetAllEdgesOfVertex(_VertexType vertex) = 0;
+		virtual std::vector<EdgeType> GetAllEdgesOfVertex(VertexType vertex) const = 0;
 	};
 
 	template<class _VertexType>
@@ -21,6 +23,6 @@ namespace graph
 		using EdgeType = _VertexType;
 
 	public:
-		virtual std::vector<EdgeType> GetAllEdgesOfVertex(_VertexType vertex) = 0;
+		virtual std::vector<EdgeType> GetAllEdgesOfVertex(_VertexType vertex) const = 0;
 	};
 }

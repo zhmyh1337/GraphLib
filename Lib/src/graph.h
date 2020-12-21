@@ -20,6 +20,13 @@ namespace graph
 	private:
 		using Container = IGraphContainer<VertexType, WeightType>;
 
+	public:
+		Graph()
+		{
+			m_graph = new AdjacencyList<VertexType, WeightType>();
+			m_graph->GetAllEdgesOfVertex(5);
+		}
+
 	private:
 		Container* m_graph;
 	};
@@ -36,6 +43,13 @@ namespace graph
 
 	private:
 		using Container = IGraphContainer<VertexType>;
+
+	public:
+		Graph()
+		{
+			m_graph = new AdjacencyList<VertexType>();
+			m_graph->GetAllEdgesOfVertex(5);
+		}
 
 	private:
 		Container* m_graph;
