@@ -91,7 +91,7 @@ int main()
 			std::make_pair(3, std::make_pair(7, 2.4)),
 			std::make_pair(3, std::make_pair(6, 5.0)),
 			std::make_pair(0, std::make_pair(0, 0.0)),
-			});
+		});
 		auto graph = graph::Graph(structure);
 
 		// ...

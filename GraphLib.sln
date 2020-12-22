@@ -9,7 +9,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Visitor", "Samples\Visitor\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Composite", "Samples\Composite\Composite.vcxproj", "{467417A0-967B-4DD4-9C10-02014678CF9E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GraphInitialization", "GraphInitialization\GraphInitialization.vcxproj", "{0331926D-0C0C-4534-8A6E-497C2942FB3B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GraphInitialization", "Samples\GraphInitialization\GraphInitialization.vcxproj", "{0331926D-0C0C-4534-8A6E-497C2942FB3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
