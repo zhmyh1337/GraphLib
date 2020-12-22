@@ -21,7 +21,7 @@ int main()
 		std::make_pair(d, a1),
 		std::make_pair(d, c2),
 	});
-	auto graph = graph::Graph<IBase*>(graphStructure);
+	auto graph = graph::Graph(graphStructure);
 
 	auto printVisitor = new PrintVisitor();
 	graph.DepthFirstSearch(a1, [printVisitor](auto from, IBase* to) { to->Accept(printVisitor); });
