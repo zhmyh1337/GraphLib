@@ -8,6 +8,7 @@
 #include "Container/AdjacencyList.h"
 #include "Container/AdjacencyMatrix.h"
 #include "Container/EdgeList.h"
+#include "Utilities/EdgeToInversed.h"
 #include "Utilities/EdgeToVertex.h"
 
 namespace graph
@@ -25,6 +26,17 @@ namespace graph
 		Graph() : m_structure(new AdjacencyList<VertexType, WeightType>()) {}
 
 		explicit Graph(Container* structure) : m_structure(structure) {}
+
+		void AddEdge(VertexType vertex, EdgeType edge)
+		{
+			m_structure->AddEdge(vertex, edge);
+		}
+		
+		void AddBidirectionalEdge(VertexType vertex, EdgeType edge)
+		{
+			m_structure->AddEdge(vertex, edge);
+			m_structure->AddEdge(_EdgeToVertex<EdgeType>::Do(edge), _EdgeToInversed<EdgeType>::Do(vertex, edge));
+		}
 
 		void BreadthFirstSearch(VertexType startingVertex, std::function<void(VertexType, EdgeType)> callback)
 		{
@@ -48,6 +60,29 @@ namespace graph
 						queue.push(newVertex);
 						callback(vertex, edge);
 					}
+				}
+			}
+		}
+
+		void DepthFirstSearch(VertexType startingVertex, std::function<void(VertexType, EdgeType)> callback)
+		{
+			std::unordered_set<VertexType> visitedVertices;
+			DepthFirstSearch(startingVertex, callback, visitedVertices);
+		}
+
+	private:
+		void DepthFirstSearch(VertexType vertex, std::function<void(VertexType, EdgeType)> callback,
+			std::unordered_set<VertexType>& visitedVertices)
+		{
+			visitedVertices.insert(vertex);
+
+			for (const auto edge : m_structure->GetAllEdgesOfVertex(vertex))
+			{
+				auto newVertex = _EdgeToVertex<EdgeType>::Do(edge);
+				if (!visitedVertices.count(newVertex))
+				{
+					callback(vertex, edge);
+					DepthFirstSearch(newVertex, callback, visitedVertices);
 				}
 			}
 		}

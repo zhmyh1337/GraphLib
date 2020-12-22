@@ -7,7 +7,7 @@ namespace graph
 	template<class _VertexType>
 	struct _EdgeToVertex
 	{
-		static _VertexType Do(_VertexType edge)
+		static auto Do(_VertexType edge)
 		{
 			return edge;
 		}
@@ -16,7 +16,7 @@ namespace graph
 	template<class _VertexType, class _WeightType>
 	struct _EdgeToVertex<std::pair<_VertexType, _WeightType>>
 	{
-		static _VertexType Do(std::pair<_VertexType, _WeightType> edge)
+		static auto Do(std::pair<_VertexType, _WeightType> edge)
 		{
 			return edge.first;
 		}
