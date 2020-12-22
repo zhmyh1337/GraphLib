@@ -12,6 +12,8 @@ namespace graph
 	template<size_t _MaxVertexIndex, class _VertexType, class _WeightType = void>
 	class AdjacencyMatrix : public IGraphContainer<_VertexType, _WeightType>
 	{
+		static_assert(std::is_convertible_v<_VertexType, size_t>, "_VertexType must be convertible to size_t (as an index).");
+
 	private:
 		using _Mybase = IGraphContainer<_VertexType, _WeightType>;
 
@@ -59,6 +61,8 @@ namespace graph
 	template<size_t _MaxVertexIndex, class _VertexType>
 	class AdjacencyMatrix<_MaxVertexIndex, _VertexType, void> : public IGraphContainer<_VertexType>
 	{
+		static_assert(std::is_convertible_v<_VertexType, size_t>, "_VertexType must be convertible to size_t (as an index).");
+
 	private:
 		using _Mybase = IGraphContainer<_VertexType>;
 
@@ -92,7 +96,7 @@ namespace graph
 		{
 			m_data[static_cast<size_t>(vertex)][static_cast<size_t>(edge)]++;
 		}
-
+		
 		constexpr auto MaxVertexIndex() const
 		{
 			return _MaxVertexIndex;

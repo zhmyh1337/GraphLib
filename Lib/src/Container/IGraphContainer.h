@@ -15,6 +15,7 @@ namespace graph
 
 	public:
 		virtual std::vector<EdgeType> GetAllEdgesOfVertex(VertexType vertex) const = 0;
+
 		virtual void AddEdge(VertexType vertex, EdgeType edge) = 0;
 	};
 
@@ -28,6 +29,7 @@ namespace graph
 
 	public:
 		virtual std::vector<EdgeType> GetAllEdgesOfVertex(VertexType vertex) const = 0;
+
 		virtual void AddEdge(VertexType vertex, EdgeType edge) = 0;
 	};
 }

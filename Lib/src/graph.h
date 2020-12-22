@@ -1,45 +1,56 @@
 #pragma once
 
+#include <functional>
+#include <unordered_set>
+#include <queue>
+
 #include "Container/IGraphContainer.h"
 #include "Container/AdjacencyList.h"
 #include "Container/AdjacencyMatrix.h"
+#include "Container/EdgeList.h"
+#include "Utilities/EdgeToVertex.h"
 
 namespace graph
 {
-	// Weighted graph.
 	template<class _VertexType, class _WeightType = void>
 	class Graph
 	{
 	public:
 		using VertexType = _VertexType;
 		using WeightType = _WeightType;
-
-	private:
 		using Container = IGraphContainer<VertexType, WeightType>;
+		using EdgeType = typename Container::EdgeType;
 
 	public:
 		Graph() : m_structure(new AdjacencyList<VertexType, WeightType>()) {}
 
 		explicit Graph(Container* structure) : m_structure(structure) {}
 
-	private:
-		Container* m_structure;
-	};
+		void BreadthFirstSearch(VertexType startingVertex, std::function<void(VertexType, EdgeType)> callback)
+		{
+			std::unordered_set<VertexType> visitedVertices;
+			std::queue<VertexType> queue;
 
-	// Unweighted graph.
-	template<class _VertexType>
-	class Graph<_VertexType, void>
-	{
-	public:
-		using VertexType = _VertexType;
+			visitedVertices.insert(startingVertex);
+			queue.push(startingVertex);
 
-	private:
-		using Container = IGraphContainer<VertexType>;
+			while (!queue.empty())
+			{
+				auto vertex = queue.front();
+				queue.pop();
 
-	public:
-		Graph() : m_structure(new AdjacencyList<VertexType>()) {}
-
-		explicit Graph(Container* structure) : m_structure(structure) {}
+				for (const auto edge : m_structure->GetAllEdgesOfVertex(vertex))
+				{
+					auto newVertex = _EdgeToVertex<EdgeType>::Do(edge);
+					if (!visitedVertices.count(newVertex))
+					{
+						visitedVertices.insert(newVertex);
+						queue.push(newVertex);
+						callback(vertex, edge);
+					}
+				}
+			}
+		}
 
 	private:
 		Container* m_structure;
