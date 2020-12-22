@@ -38,7 +38,12 @@ namespace graph
 			m_structure->AddEdge(_EdgeToVertex<EdgeType>::Do(edge), _EdgeToInversed<EdgeType>::Do(vertex, edge));
 		}
 
-		void BreadthFirstSearch(VertexType startingVertex, std::function<void(VertexType, EdgeType)> callback)
+		std::vector<EdgeType> GetAllEdgesOfVertex(VertexType vertex) const
+		{
+			return m_structure->GetAllEdgesOfVertex(vertex);
+		}
+
+		void BreadthFirstSearch(VertexType startingVertex, std::function<void(VertexType, EdgeType)> callback) const
 		{
 			std::unordered_set<VertexType> visitedVertices;
 			std::queue<VertexType> queue;
@@ -64,7 +69,7 @@ namespace graph
 			}
 		}
 
-		void DepthFirstSearch(VertexType startingVertex, std::function<void(VertexType, EdgeType)> callback)
+		void DepthFirstSearch(VertexType startingVertex, std::function<void(VertexType, EdgeType)> callback) const
 		{
 			std::unordered_set<VertexType> visitedVertices;
 			DepthFirstSearch(startingVertex, callback, visitedVertices);
@@ -72,7 +77,7 @@ namespace graph
 
 	private:
 		void DepthFirstSearch(VertexType vertex, std::function<void(VertexType, EdgeType)> callback,
-			std::unordered_set<VertexType>& visitedVertices)
+			std::unordered_set<VertexType>& visitedVertices) const
 		{
 			visitedVertices.insert(vertex);
 

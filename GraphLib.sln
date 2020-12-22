@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GraphIteration", "Samples\G
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Visitor", "Samples\Visitor\Visitor.vcxproj", "{E284A065-DCC4-494D-A45B-60AE839182E7}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Composite", "Samples\Composite\Composite.vcxproj", "{467417A0-967B-4DD4-9C10-02014678CF9E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{E284A065-DCC4-494D-A45B-60AE839182E7}.Release|x64.Build.0 = Release|x64
 		{E284A065-DCC4-494D-A45B-60AE839182E7}.Release|x86.ActiveCfg = Release|Win32
 		{E284A065-DCC4-494D-A45B-60AE839182E7}.Release|x86.Build.0 = Release|Win32
+		{467417A0-967B-4DD4-9C10-02014678CF9E}.Debug|x64.ActiveCfg = Debug|x64
+		{467417A0-967B-4DD4-9C10-02014678CF9E}.Debug|x64.Build.0 = Debug|x64
+		{467417A0-967B-4DD4-9C10-02014678CF9E}.Debug|x86.ActiveCfg = Debug|Win32
+		{467417A0-967B-4DD4-9C10-02014678CF9E}.Debug|x86.Build.0 = Debug|Win32
+		{467417A0-967B-4DD4-9C10-02014678CF9E}.Release|x64.ActiveCfg = Release|x64
+		{467417A0-967B-4DD4-9C10-02014678CF9E}.Release|x64.Build.0 = Release|x64
+		{467417A0-967B-4DD4-9C10-02014678CF9E}.Release|x86.ActiveCfg = Release|Win32
+		{467417A0-967B-4DD4-9C10-02014678CF9E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
